@@ -17,7 +17,7 @@
 ## Home
 
 
-![hom](https://user-images.githubusercontent.com/103155342/214883097-193ab3c6-ba9e-4580-8c56-fc82e72c4abd.jpeg)
+![home1](https://user-images.githubusercontent.com/103155342/214885986-37b8d19d-ce22-46d3-8025-ccaf04d67f3a.jpeg)
 
 ## itemDetails
 ![details](https://user-images.githubusercontent.com/103155342/214883619-9cee519f-61f3-40ec-ac28-f09df514b2b3.jpeg)
