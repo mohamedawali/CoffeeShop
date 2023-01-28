@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:cart/get/cartGet.dart';
+import 'package:cart/widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:my_fatoorah/my_fatoorah.dart';
 import '../constant/colorConstant.dart';
 class Cart extends StatelessWidget {
 
@@ -14,32 +18,8 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
   cartController.returnFromCart();
     return Scaffold(
-        appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Container(
-                decoration: BoxDecoration(
-                    color: buttonBackground,
-                    borderRadius: BorderRadius.circular(15)),
-                child: IconButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.white,
-                  ),
-                  // color: Colors.cyan,
-                )),
-          ),
-          backgroundColor: background,
-          elevation: 0,
-          title: const Text(
-            'Cart',
-            style: TextStyle(color: icon),
-          ),
-          centerTitle: true,
-        ),
+        appBar: appBar('Cart'),
+
         body: Container(
             height: MediaQuery.of(context).size.height,
             color: background,
@@ -136,9 +116,10 @@ class Cart extends StatelessWidget {
                           SizedBox(
                             width: MediaQuery.of(context).size.width,
                             child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(primary: icon),
-                              child:  Text('Checkout(${check.sum.value} EGP)'),
+                                onPressed: () {checkPayment(context,check.sum.value.toDouble());},
+                                style: ElevatedButton.styleFrom(primary: icon),
+                                child:  Text('Checkout(${check.sum.value} EGP)'),
+
                             ),
                           ),
                         ],
@@ -148,4 +129,21 @@ class Cart extends StatelessWidget {
 
             ]))));
   }
+
+   checkPayment(BuildContext context, double value) async{
+
+      var response = await MyFatoorah.startPayment(context: context,buildAppBar: (context)=>appBar('Payment'),
+          request: MyfatoorahRequest.test(
+              token: 'rLtt6JWvbUHDDhsZnfpAhpYk4dxYDQkbcPTyGaKp2TYqQgG7FGZ5Th_WD53Oq8Ebz6A53njUoo1w3pjU1D4vs_ZMqFiz_j0urb_BH9Oq9VZoKFoJEDAbRZepGcQanImyYrry7Kt6MnMdgfG5jn4HngWoRdKduNNyP4kzcp3mRv7x00ahkm9LAK7ZRieg7k1PDAnBIOG3EyVSJ5kK4WLMvYr7sCwHbHcu4A5WwelxYK0GMJy37bNAarSJDFQsJ2ZvJjvMDmfWwDVFEVe_5tOomfVNt6bOg9mexbGjMrnHBnKnZR1vQbBtQieDlQepzTZMuQrSuKn-t5XZM7V6fCW7oP-uXGX-sMOajeX65JOf6XVpk29DP6ro8WTAflCDANC193yof8-f5_EYY-3hXhJj7RBXmizDpneEQDSaSz5sFk0sV5qPcARJ9zGG73vuGFyenjPPmtDtXtpx35A-BVcOSBYVIWe9kndG3nclfefjKEuZ3m4jL9Gg1h2JBvmXSMYiZtp9MR5I6pvbvylU_PP5xJFSjVTIz7IQSjcVGO41npnwIxRXNRxFOdIUHn0tjQ-7LwvEcTXyPsHXcMD8WtgBh-wxR8aKX7WPSsT1O8d8reb2aR7K3rkV3K82K_0OgawImEpwSvp9MNKynEAJQS6ZHe_J_l77652xwPNxMRTMASk1ZsJL',
+              language: ApiLanguage.Arabic,
+              invoiceAmount: value,
+              successUrl: "https://www.facebook.com",
+              errorUrl: "https://www.google.com/",
+              currencyIso: Country.SaudiArabia));
+      print('err${response.toString()}');
+
+   }
+
+
+
 }

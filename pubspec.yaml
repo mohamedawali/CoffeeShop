@@ -39,6 +39,7 @@ dependencies:
   get:
   flutter_screenutil:
   dio:
+  my_fatoorah: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

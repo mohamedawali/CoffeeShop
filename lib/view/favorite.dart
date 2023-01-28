@@ -1,4 +1,5 @@
 import 'package:cart/get/favoritGet.dart';
+import 'package:cart/widget/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -12,23 +13,7 @@ class Favorite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     favoriteController.returnFromFavorite();
-    return Scaffold(appBar: AppBar(title: const Text('Favorite',style: TextStyle(color: icon),),centerTitle: true,backgroundColor: background,elevation: 0,automaticallyImplyLeading: false,leading: Padding(
-      padding: const EdgeInsets.all(8),
-      child: Container(
-          decoration: BoxDecoration(
-              color: buttonBackground,
-              borderRadius: BorderRadius.circular(15)),
-          child: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-            ),
-
-          )),
-    ),),body: Container(color: background,
+    return Scaffold(appBar: appBar('Favorite'),body: Container(color: background,
         child:Padding(
           padding: const EdgeInsets.only(right: 20,left: 20,top:10,bottom: 10),
           child: GetX<FavoriteController>(init: FavoriteController(),
