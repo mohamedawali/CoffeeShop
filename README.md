@@ -21,9 +21,10 @@
 
 ## itemDetails
 ![details](https://user-images.githubusercontent.com/103155342/214883619-9cee519f-61f3-40ec-ac28-f09df514b2b3.jpeg)
-## cart
-![cart](https://user-images.githubusercontent.com/103155342/214884846-32ee276e-ceee-4eb1-9ab4-fa52876f69e4.jpeg)
 ## favorite
 ![favorite](https://user-images.githubusercontent.com/103155342/214885473-ee560c91-bfbc-449c-bd98-93b961373350.jpeg)
+## cart
+![cart](https://user-images.githubusercontent.com/103155342/214884846-32ee276e-ceee-4eb1-9ab4-fa52876f69e4.jpeg)
+## payment getway
 
 
