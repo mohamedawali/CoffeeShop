@@ -12,6 +12,7 @@
 - dio : https://pub.dev/packages/dio
 - path: https://pub.dev/packages/path
 - sqlit: https://pub.dev/packages/sqflite
+- my_fatoorah: https://pub.dev/packages/my_fatoorah
 
 # Screen
 ## Home
@@ -26,5 +27,8 @@
 ## cart
 ![cart](https://user-images.githubusercontent.com/103155342/214884846-32ee276e-ceee-4eb1-9ab4-fa52876f69e4.jpeg)
 ## payment getway
+![WhatsApp Image 2023-01-28 at 11 40 07 PM](https://user-images.githubusercontent.com/103155342/215294329-477da167-81aa-45f5-9a35-dd9e1a94f93a.jpeg)
+  
+![WhatsApp Image 2023-01-28 at 11 40 08 PM](https://user-images.githubusercontent.com/103155342/215294346-9fd5c4dc-9929-4e4a-b385-ec1f2dc36f3b.jpeg)
 
 
