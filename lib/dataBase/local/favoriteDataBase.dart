@@ -1,7 +1,8 @@
 import 'package:cart/constant/dbConstant.dart';
-import 'package:cart/dbAbstractFunction.dart';
+import 'package:cart/dataBase/local/dbAbstractFunction.dart';
 import 'package:sqflite/sqflite.dart';
-import '../../dbFunction.dart';
+
+import 'dbFunction.dart';
 
 class DbFavoriteTable with DbFunction, DbAbstractFunction {
   @override

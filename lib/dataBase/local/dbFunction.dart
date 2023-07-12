@@ -1,7 +1,8 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'constant/dbConstant.dart';
+import '../../constant/dbConstant.dart';
+
 
 class  DbFunction{
 

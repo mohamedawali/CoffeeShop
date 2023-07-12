@@ -11,10 +11,10 @@ class FavoriteRepo{
 
   }
   Future<List<LocalDrinkModel>> returnFromFavorite()async{
-    var favoritList =await dbFavorite.returnFromTable();
+    var favoriteList =await dbFavorite.returnFromTable();
 
     var list2 =
-    favoritList.map((element) => LocalDrinkModel.getCartDrinks(element)).toList();
+    favoriteList.map((element) => LocalDrinkModel.getCartDrinks(element)).toList();
 
     return list2;
   }

@@ -1,11 +1,10 @@
-import 'package:cart/dbFunction.dart';
-import 'package:cart/dbAbstractFunction.dart';
-import 'package:cart/models/localDbModel.dart';
+import 'package:cart/dataBase/local/dbAbstractFunction.dart';
 
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common/sqlite_api.dart';
 
 import '../../constant/dbConstant.dart';
+import 'dbFunction.dart';
 
 class DbCartTable with DbAbstractFunction, DbFunction {
   @override
