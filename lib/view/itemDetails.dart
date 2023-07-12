@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../constant/colorConstant.dart';
 import '../get/cartGet.dart';
 
@@ -15,7 +14,7 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
-  var name, image, description;
+  var name, image, description,index;
   int price = 15;
   CartController? cartController;
   FavoriteController? favoriteController;
@@ -26,8 +25,9 @@ class _DetailsState extends State<Details> {
 
     name = Get.parameters['name'];
     description = Get.parameters['description'];
-
+index= Get.parameters["index"];
     cartController = Get.find<CartController>();
+    // cartController = Get.put<CartController>(CartController(CartRepo(DbCartTable())));
 
     favoriteController = Get.put<FavoriteController>(FavoriteController());
   }
@@ -48,12 +48,14 @@ class _DetailsState extends State<Details> {
               padding: const EdgeInsets.only(top: 10),
               child: Stack(
                 children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height / 2,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                            image: NetworkImage(image), fit: BoxFit.cover)),
+                  Hero(tag: 'image$index',
+                    child: Container(
+                      height: MediaQuery.of(context).size.height / 2,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          image: DecorationImage(
+                              image: NetworkImage(image), fit: BoxFit.fill)),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -63,7 +65,8 @@ class _DetailsState extends State<Details> {
                             borderRadius: BorderRadius.circular(15)),
                         child: IconButton(
                           onPressed: () {
-                            Get.back();
+                            Get.offNamed('/',);
+
                           },
                           icon: const Icon(
                             Icons.arrow_back_ios,
@@ -102,38 +105,40 @@ class _DetailsState extends State<Details> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                       side: BorderSide(width: 1, color: buttonBackground)),
-                  child: Row(children: [
-                    IconButton(
-                        onPressed: () {
-                          cartController!.decrement();
-                        },
-                        icon: const Icon(
-                          Icons.remove,
-                          color: icon,
-                          size: 28,
-                        )),
-                    SizedBox(
-                      width: 5.w,
-                    ),
-                    GetX<CartController>(
-                      builder: (counter) => Text(
-                        '${counter.count.value}',
-                        style: TextStyle(fontSize: 22.sp, color: icon),
+                  child: GetX<CartController>(
+                    builder:(x)=> Row(children: [
+                      IconButton(
+                          onPressed: () {
+                            x!.decrement();
+                          },
+                          icon: const Icon(
+                            Icons.remove,
+                            color: icon,
+                            size: 28,
+                          )),
+                      SizedBox(
+                        width: 5.w,
                       ),
-                    ),
-                    SizedBox(
-                      width: 5.w,
-                    ),
-                    IconButton(
-                        onPressed: () {
-                          cartController!.increment();
-                        },
-                        icon: const Icon(
-                          Icons.add,
-                          color: icon,
-                          size: 28,
-                        ))
-                  ])),
+
+                            Text(
+                          '${x.count.value}',
+                          style: TextStyle(fontSize: 22.sp, color: icon),
+                        ),
+                     //),
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      IconButton(
+                          onPressed: () {
+                            x.increment();
+                          },
+                          icon: const Icon(
+                            Icons.add,
+                            color: icon,
+                            size: 28,
+                          ))
+                    ]),
+                  )),
               Text(
                 '${price} EGP',
                 style: TextStyle(color: icon, fontSize: 22.sp),
@@ -175,11 +180,11 @@ class _DetailsState extends State<Details> {
                             minimumSize: Size(0, 40.h),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
-                            primary: icon,
-                            onPrimary: Colors.white,
+                            backgroundColor: icon,
+                            foregroundColor: Colors.white,
                             textStyle: TextStyle(fontSize: 18.sp)),
                         onPressed: () {
-                          cartController!.addToCart(name, price, image);
+                         cartController!.addToCart(name, price, image);
                         },
                         child: const Text('Add to Cart'),
                       ),

@@ -21,7 +21,7 @@ class Favorite extends StatelessWidget {
             itemCount: fav.favoriteList.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 0.7,
+                childAspectRatio: 0.8,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10),
             itemBuilder: (context, index) =>  Container(
@@ -56,7 +56,7 @@ class Favorite extends StatelessWidget {
                           Text(
                            fav.favoriteList[index].productName,
                             style: TextStyle(
-                              fontSize: 16.sp,
+                              fontSize: 18.sp,
                               color: Colors.white,
                             ),
                           ),
@@ -67,7 +67,7 @@ class Favorite extends StatelessWidget {
                             children: [
                               Text(
                                " ${fav.favoriteList[index].productPrice}",
-                                style: TextStyle(fontSize: 14.sp, color: icon),
+                                style: TextStyle(fontSize: 16.sp, color: icon),
                               ),IconButton(onPressed: (){fav.deleteFromFavorite(fav.favoriteList[index].id,index);}, icon: const Icon(Icons.favorite_outlined,color: icon,))
                             ],
                           )

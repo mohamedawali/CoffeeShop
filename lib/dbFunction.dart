@@ -3,7 +3,7 @@ import 'package:sqflite/sqflite.dart';
 
 import 'constant/dbConstant.dart';
 
-mixin  DbFunction{
+class  DbFunction{
 
   Future getMyDatabasePath() async {
     String path = await getDatabasesPath();

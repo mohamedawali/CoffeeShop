@@ -7,37 +7,41 @@ import 'package:get/get.dart';
 import '../constant/colorConstant.dart';
 import '../models/drinkModel.dart';
 
-Widget cafeGridView(RxList<CafeModel>? listCoffee) {
+Widget cafeGridView(RxList<CafeModel>? listCoffee, BuildContext context,) {
   return GridView.builder(
       itemCount: listCoffee!.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 0.7,
+       childAspectRatio:0.8,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10),
-      itemBuilder: (context, index) => InkWell(
-            onTap: () => Get.toNamed("/details",parameters:{'image':listCoffee[index].image!,'name':listCoffee[index].title!,"description":listCoffee[index].description!}),
-            child: Container(
+      itemBuilder: (context, index) =>
+          InkWell(
+            onTap: () => Get.offNamed("/details",parameters:{'image':listCoffee[index].image!,'name':listCoffee[index].title!,"description":listCoffee[index].description!,'index':"$index"} ),
+            child:Container(
+
               decoration: BoxDecoration(
                   color: buttonBackground,
                   borderRadius: BorderRadius.circular(15)),
+
               child: Padding(
-                padding: const EdgeInsets.only(right: 10, left: 10, top: 10),
+                padding: const EdgeInsets.only(right: 10, left: 10,top: 10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(15),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height / 5.5,
-                        child: FadeInImage.assetNetwork(placeholder: 'asset/loading.gif',
-                          image:
-                            listCoffee[index].image!,
-                            fit: BoxFit.cover,
 
+                        child: Hero(tag: 'image$index',
+                          child: FadeInImage.assetNetwork(placeholder: 'asset/loading.gif',
+                            image:
+                              listCoffee[index].image!,
+                              fit: BoxFit.cover,height: 100.h,width:MediaQuery.of(context).size.width,
+
+                          ),
                         ),
-                      ),
+                    //  ),
                     ),
                     SizedBox(
                       height: 8.h,
@@ -45,7 +49,7 @@ Widget cafeGridView(RxList<CafeModel>? listCoffee) {
                     Text(
                       listCoffee[index].title!,
                       style: TextStyle(
-                        fontSize: 16.sp,
+                        fontSize: 14.sp,
                         color: Colors.white,
                       ),
                     ),
@@ -69,11 +73,11 @@ Widget drinkGridView(RxList<Drink> listDrink) {
       itemCount: listDrink.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 0.7,
+         childAspectRatio: 0.8,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10),
       itemBuilder: (context, index) => InkWell(
-            onTap: () => Get.toNamed("/details",parameters:{'image':listDrink[index].strDrinkThumb!,'name':listDrink[index].strDrink!,'description':description}),
+            onTap: () => Get.offNamed("/details",parameters:{'image':listDrink[index].strDrinkThumb!,'name':listDrink[index].strDrink!,'description':description}),
             child: Container(
               decoration: BoxDecoration(
                   color: buttonBackground,
@@ -106,7 +110,7 @@ Widget drinkGridView(RxList<Drink> listDrink) {
                     Text(
                       listDrink[index].strDrink!,
                       style: TextStyle(
-                        fontSize: 16.sp,
+                        fontSize: 18.sp,
                         color: Colors.white,
                       ),
                     ),
@@ -115,7 +119,7 @@ Widget drinkGridView(RxList<Drink> listDrink) {
                     ),
                     Text(
                       '15 EGP',
-                      style: TextStyle(fontSize: 14.sp, color: icon),
+                      style: TextStyle(fontSize: 16.sp, color: icon),
                     )
                   ],
                 ),
