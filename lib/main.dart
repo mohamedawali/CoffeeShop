@@ -1,4 +1,3 @@
-import 'package:cart/binding.dart';
 import 'package:cart/route/rote.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,8 +11,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  Routes routes;
-    MyApp({Key? key,required this.routes}) : super(key: key);
+final  Routes routes;
+  const  MyApp({Key? key,required this.routes}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
