@@ -12,7 +12,7 @@ class DrinksService {
     try {
       Response response = await _dio!
           .get('filter.php', queryParameters: {'c': 'Ordinary_Drink'});
-      print('rreeee${response.data}');
+
       return response.data;
     } on DioError catch (e) {
       print('err${e.error}');
@@ -23,7 +23,7 @@ class DrinksService {
   Future<Map<String, dynamic>> cocktailDrink() async {
     Response response =
         await _dio!.get('filter.php', queryParameters: {'c': 'Cocktail'});
-    print('${response.data}');
+
     return response.data;
   }
 }

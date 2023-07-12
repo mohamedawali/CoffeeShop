@@ -109,7 +109,7 @@ index= Get.parameters["index"];
                     builder:(x)=> Row(children: [
                       IconButton(
                           onPressed: () {
-                            x!.decrement();
+                            x.decrement();
                           },
                           icon: const Icon(
                             Icons.remove,
@@ -140,7 +140,7 @@ index= Get.parameters["index"];
                     ]),
                   )),
               Text(
-                '${price} EGP',
+                '$price EGP',
                 style: TextStyle(color: icon, fontSize: 22.sp),
               )
             ]),

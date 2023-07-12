@@ -1,7 +1,5 @@
-import 'package:cart/dataBase/local/cartDataBase.dart';
 import 'package:cart/get/cartGet.dart';
-import 'package:cart/repository/cartRepo.dart';
-import 'package:cart/route/pageRoute.dart';
+
 import 'package:cart/view/cart.dart';
 import 'package:cart/view/favorite.dart';
 import 'package:cart/widget/gridView.dart';
@@ -54,7 +52,7 @@ class _HomeState extends State<Home> {
                                         },
                                         style: ElevatedButton.styleFrom(
                                           minimumSize: Size(0, 40.h),
-                                          primary: buttonBackground,
+                                          backgroundColor: buttonBackground,
                                         ),
                                         child: const Icon(
                                           Icons.favorite_outline,
@@ -66,7 +64,7 @@ class _HomeState extends State<Home> {
                                         ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                               minimumSize: Size(0, 40.h),
-                                              primary: buttonBackground,
+                                              backgroundColor: buttonBackground,
                                             ),
                                             onPressed: () {
                                               Get.to(Cart(),transition: Transition.rightToLeft,curve: Curves.easeIn,duration: Duration(seconds: 1));
