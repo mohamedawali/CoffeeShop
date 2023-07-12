@@ -2,6 +2,9 @@
 
 - It is coffee shop app for hot and ice drinks.
 - Used Flutter with Getx .
+- Used Hero animation .
+- Used Page route transition animate .
+  
 # API
 - https://api.sampleapis.com/coffee/hot
 - https://api.sampleapis.com/coffee/iced
